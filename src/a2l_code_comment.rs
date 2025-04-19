@@ -1,6 +1,4 @@
 use regex::Regex;
-use tree_sitter::{Node, Parser};
-use tree_sitter_c::LANGUAGE;
 use a2lfile::*;
 
 #[derive(Debug, PartialEq)]
