@@ -5,9 +5,11 @@ use a2lfile::*;
 
 mod a2l_code_comment;
 mod a2l_comment_generator;
+mod code_parser;
 
 use a2l_code_comment::*;
 use a2l_comment_generator::*;
+use code_parser::*;
 
 fn main() {
     let comment = r#"
