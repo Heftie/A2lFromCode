@@ -6,8 +6,6 @@ use a2lfile::*;
 
 pub struct CodeParser {
     files_paths: Vec<String>,
-
-
 }
 
 impl CodeParser {
@@ -40,17 +38,17 @@ impl CodeParser {
         for node in root_node.children(&mut cursor) {
             // get the node type
             let node_type = node.kind();
-            // get the node text
-            let start = node.range().start_byte;
-            let end = node.range().end_byte;
-            let node_text = &code[start..end]; // Borrow the slice
             // print the node type and text
-            println!("Node type: {}, Node text: {}", node_type, node_text);
+            println!("Node type: {}, Node text: {}", node_type, self.get_node_text(&node, &code));
         }
     }
+
+    fn get_node_text(&self, node: &Node, code: &str) -> String {
+        let start = node.range().start_byte;
+        let end = node.range().end_byte;
+        code[start..end].to_string() // Return a new String
+    }
 }
-
-
 
 mod test {
     use super::*;
