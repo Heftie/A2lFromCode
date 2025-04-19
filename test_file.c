@@ -20,3 +20,15 @@ int var = 10;
 
 void func();
 
+void func1(uint32_t a, uint32_t b)
+{
+    uint32_t c = a + b;
+    if (c > 0)
+    {
+        c = 0;
+    }
+    else
+    {
+        c = 1;
+    }
+}

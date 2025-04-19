@@ -30,16 +30,20 @@ impl CodeParser {
             .expect("Error loading C parser");
         let tree = parser.parse(&code, None).unwrap(); // Pass a reference to `code`
         assert!(!tree.root_node().has_error());
-        // get the root node
-        let root_node = tree.root_node();
+        // walk through the code
+        self.walk_through_code(&tree, &code);
+    }
 
-        // create a TreeCursor and iterate over the nodes
-        let mut cursor = root_node.walk();
-        for node in root_node.children(&mut cursor) {
+    fn walk_through_code(&self, tree: &tree_sitter::Tree, code: &str) {
+        let mut cursor = tree.root_node().walk();
+        for node in tree.root_node().children(&mut cursor) {
             // get the node type
             let node_type = node.kind();
-            // print the node type and text
-            println!("Node type: {}, Node text: {}", node_type, self.get_node_text(&node, &code));
+            if node_type == "declaration" {
+                let dec = node.child(1).unwrap();
+                println!("Node type: {}, dec: {}", node_type, dec);                
+            }
+
         }
     }
 

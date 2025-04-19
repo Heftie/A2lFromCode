@@ -81,7 +81,7 @@ impl A2lCommentGenerator {
         )
     }    
 
-    fn create_measuremnt(
+    fn create_measurement(
         &self,
         name: &str,
         long_identifier: &str,
