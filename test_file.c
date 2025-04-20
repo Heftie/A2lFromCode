@@ -18,6 +18,8 @@ uint16_t var = 5;
 int var = 10;
 #endif
 
+int varint = 0;
+
 void func();
 
 void func1(uint32_t a, uint32_t b)
