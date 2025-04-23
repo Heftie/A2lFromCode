@@ -34,7 +34,6 @@ impl CodeParser {
     }
 
     fn walk_through_code(&self, tree: &tree_sitter::Tree, code: &str) -> Result<(), tree_sitter::QueryError> {
-        let cursor = tree.root_node().walk();
         // Define the Query
         let query_source = r#"
         (translation_unit
@@ -55,7 +54,7 @@ impl CodeParser {
             for capture in query_match.captures {
                 let node = capture.node; // Access the node from the capture
                 let node_text = self.get_node_text(&node, code);
-                println!("Found variable: {}", node_text);
+                println!("found text:\n{}\n", node_text);
             }
         }
 

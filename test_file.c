@@ -18,7 +18,7 @@ uint16_t var = 5;
 int var = 10;
 #endif
 
-int varint = 0;
+int var_int = 0;
 
 void func();
 
